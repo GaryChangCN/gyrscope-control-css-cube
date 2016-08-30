@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0px;
+}
+
+#cube {
+    transform-style: preserve-3d;
+    width: 180px;
+    height: 320px;
+    position: relative;
+    margin-left: 220px;
+    margin-top: 320px;
+    transition: transform 0.1s;
+}
+
+
+#cube>div {
+    position: absolute;
+    opacity: 1;
+}
+
+#front {
+    background-color: orange;
+    width: 180px;
+    height: 320px;
+    transform: translateZ(10px);
+}
+
+#back {
+    background-color: yellow;
+    width: 180px;
+    height: 320px;
+    transform: translateZ(-10px);
+}
+
+#top {
+    background-color: red;
+    width: 180px;
+    height: 20px;
+    transform: translateY(-10px) rotateX(89deg);
+}
+
+#bottom {
+    background-color: green;
+    width: 180px;
+    height: 20px;
+    transform: translateY(310px) rotateX(89deg);
+}
+
+#left {
+    background-color: blue;
+    width: 20px;
+    height: 320px;
+    transform: translateX(-10px) rotateY(89deg);
+}
+
+#right {
+    background-color: grey;
+    width: 20px;
+    height: 320px;
+    transform: translateX(170px) rotateY(89deg);
+}

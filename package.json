@@ -1,0 +1,14 @@
+{
+  "name": "gyroscope",
+  "version": "1.0.0",
+  "description": "gyrscope",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "garychang",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^1.1.1"
+  }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>利用手机陀螺仪控制长方体运动-客户端</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="cube">
+        <div id="front">f</div>
+        <div id="back">b</div>
+        <div id="top">t</div>
+        <div id="bottom">bt</div>
+        <div id="left">l</div>
+        <div id="right">r</div>
+    </div>
+</body>
+<script>
+var socket = new WebSocket("ws://192.168.1.188:5656");
+socket.onopen=function(){
+	console.log("open");
+}
+socket.onmessage = function(event) {
+    var json = JSON.parse(event.data);
+    var alpha=-Math.ceil(json.alpha);
+    var beta=90-Math.ceil(json.beta);
+    var gamma=Math.ceil(json.gamma);
+    var cube=document.getElementById("cube");
+    cube.style.transform="rotateX("+beta+"deg) rotateY("+gamma+"deg) rotateZ("+alpha+"deg)";
+
+}
+socket.onclose = function() {
+    socket.close();
+}
+</script>
+
+</html>

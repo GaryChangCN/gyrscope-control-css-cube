@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>利用手机陀螺仪控制长方体运动-控制端</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+</head>
+
+<body>
+    <div id="console" style="color:orange"></div>
+</body>
+<script>
+var socket = new WebSocket("ws://192.168.1.188:5656");
+window.addEventListener("deviceorientation", function(event) {
+    //alpha 一般正北为0
+    var console = document.getElementById("console");
+    console.innerHTML = "Z轴：" + event.alpha + "</br>X轴：" + event.beta + "</br>Y轴：" + event.gamma;
+    var msg = {
+        alpha: event.alpha,
+        beta: event.beta,
+        gamma: event.gamma
+    }
+    socket.send(JSON.stringify(msg));
+    socket.onclose = function() {
+        socket.close();
+    }
+});
+</script>
+
+</html>
